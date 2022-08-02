@@ -1,3 +1,4 @@
+yuntian testing push
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 # react-auth-boilerplate
@@ -34,6 +35,7 @@ Refer to react deployment documentation for more info.
 ## About
 
 This template is derived from `create-react-app` and has minimal additional dependencies. The main additions are:
+
 ```json
 "axios": "^0.24.0",
 "react-bootstrap": "^2.0.3",
@@ -66,7 +68,7 @@ add makes it easy to locate and update components and has the added benefit of
 making it easy to create custom styles that apply to that specific component.
 To apply component specific styles, add a file to the component's directory such
 as `ComponentName.scss` and then import it directly into the component with
-`import './ComponentName.scss'`.  This will keep your styles modularized and
+`import './ComponentName.scss'`. This will keep your styles modularized and
 make it easier to make changes at the component level.
 
 ### Included Routes
@@ -74,12 +76,12 @@ make it easier to make changes at the component level.
 This template comes with a handful of front-end routes that display
 different components for user actions.
 
-| Endpoint         | Component | `AuthenticatedRoute`? |
-|------------------|-------------------|-------|
-| `/sign-up`       | `SignUp`    | No |
-| `/sign-in`       | `SignIn`    | No |
-| `/change-password` | `ChangePassword`  | Yes |
-| `/sign-out`        | `SignOut`   | Yes |
+| Endpoint           | Component        | `AuthenticatedRoute`? |
+| ------------------ | ---------------- | --------------------- |
+| `/sign-up`         | `SignUp`         | No                    |
+| `/sign-in`         | `SignIn`         | No                    |
+| `/change-password` | `ChangePassword` | Yes                   |
+| `/sign-out`        | `SignOut`        | Yes                   |
 
 There is no HTTP verb listed because these are all front-end routes handled by
 React. Some of these routes should not be available unless a user is signed in,
@@ -106,24 +108,24 @@ it will not forward props to the component passed as a child, the `user` prop, f
 
 ```js
 <Route
-    path='/change-password'
-    element={
-        <RequireAuth user={user}>
-            <ChangePassword msgAlert={msgAlert} user={user} />
-        </RequireAuth>
-    }
+  path="/change-password"
+  element={
+    <RequireAuth user={user}>
+      <ChangePassword msgAlert={msgAlert} user={user} />
+    </RequireAuth>
+  }
 />
 ```
 
 ### `<AutoDismissAlert />` Component
 
 This template also already contains a component that displays user messages.
-Messages are configurable via redux actions.  This component can be found in
+Messages are configurable via redux actions. This component can be found in
 `src/components/shared/AutoDismissAlert/AutoDismissAlert.js`. **There is no need to add
-this component to your app. It is already required in `App`.**  A single
+this component to your app. It is already required in `App`.** A single
 component instance is used to manage all alerts application-wide.
 
-The alert can be used by passing the `alertMsg` method to a rendered route.  The
+The alert can be used by passing the `alertMsg` method to a rendered route. The
 `alertMsg` method expects an object with a `heading`, `message`, and a `variant` property.
 
 Use this component in conjunction with the `messages.js` file in the same
@@ -131,36 +133,36 @@ directory to create and manage all of your application messages in one place.
 
 The `variant` property must be a Bootstrap alert variant, as this component is merely a
 wrapper around the [react-bootstrap Alert
-component](https://react-bootstrap.github.io/components/alerts/).  The types it
+component](https://react-bootstrap.github.io/components/alerts/). The types it
 will accept are: 'primary', 'secondary', 'success', 'danger', 'warning', 'info',
 'light', and 'dark'.
 
- To change the duration of the message, replace `5000` with a value of your
- choice (in milliseconds) in this component's `componentDidMount` method.
+To change the duration of the message, replace `5000` with a value of your
+choice (in milliseconds) in this component's `componentDidMount` method.
 
- The AutoDismissAlert is called by calling the `msgAlert()` as seen here in the SignUp Component, on the second `.then()` and the `.catch()`:
+The AutoDismissAlert is called by calling the `msgAlert()` as seen here in the SignUp Component, on the second `.then()` and the `.catch()`:
 
- ```js
+```js
 signIn(credentials)
-    .then((res) => setUser(res.data.user))
-    .then(() =>
-        msgAlert({
-            heading: 'Sign In Success',
-            message: messages.signInSuccess,
-            variant: 'success',
-        })
-    )
-    .then(() => navigate('/'))
-    .catch((error) => {
-        setEmail('')
-        setPassword('')
-        msgAlert({
-            heading: 'Sign In Failed with error: ' + error.message,
-            message: messages.signInFailure,
-            variant: 'danger',
-        })
+  .then((res) => setUser(res.data.user))
+  .then(() =>
+    msgAlert({
+      heading: "Sign In Success",
+      message: messages.signInSuccess,
+      variant: "success",
     })
- ```
+  )
+  .then(() => navigate("/"))
+  .catch((error) => {
+    setEmail("");
+    setPassword("");
+    msgAlert({
+      heading: "Sign In Failed with error: " + error.message,
+      message: messages.signInFailure,
+      variant: "danger",
+    });
+  });
+```
 
 ### `src/apiConfig.js`
 
@@ -184,7 +186,7 @@ template can utilize Bootstrap classes like `btn`, `container`, `row`, etc.
 See an example below:
 
 ```jsx
-import React from 'react'
+import React from "react";
 
 const AboutPage = () => (
   <div className="card">
@@ -193,9 +195,9 @@ const AboutPage = () => (
       <p className="card-text">There is a Bootstrap card on this page!</p>
     </div>
   </div>
-)
+);
 
-export default AboutPage
+export default AboutPage;
 ```
 
 > Note: Remember to use `className` not `class` in your JSX!
@@ -213,8 +215,8 @@ regular components in your JSX!
 See an example below:
 
 ```jsx
-import React from 'react'
-import Card from 'react-bootstrap/Card'
+import React from "react";
+import Card from "react-bootstrap/Card";
 
 const AboutPage = () => (
   <Card>
@@ -223,14 +225,13 @@ const AboutPage = () => (
       <Card.Text>There is a Bootstrap card on this page!</Card.Text>
     </Card.Body>
   </Card>
-)
+);
 
-export default AboutPage
+export default AboutPage;
 ```
-
 
 ## [License](LICENSE)
 
 1. All content is licensed under a CC­BY­NC­SA 4.0 license.
 1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+   alternative licensing, please contact legal@ga.co.
